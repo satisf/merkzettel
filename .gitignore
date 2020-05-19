@@ -1,0 +1,5 @@
+.idea
+venv
+DirTreeWalk.egg-info
+__pycache__
+build
