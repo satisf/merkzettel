@@ -13,6 +13,9 @@
         no notes available
     </p>
 {%  endif %}
-<a href="/note/add">
-    add note
-</a>
+<form action="{% url 'note:add_note'%}" method="post">
+    {%  csrf_token %}
+    <input type="text" name="note_title">
+    <label for="add"> note title</label>
+    <input type="submit" value="add new note">
+</form>

@@ -1,0 +1,23 @@
+<a href="/note">back to all notes</a>
+<br/>
+{{ note.title }}
+<ul>
+{% for memo in memos %}
+    {% if memo.is_active %}
+    <li>{{ memo.memo_text }}
+        <form action="{% url 'note:deactivate_memo' note.id memo.id%}" method="post">
+            {%  csrf_token %}
+            <input type="submit" value="mark checked">
+        </form>
+    </li>
+    {%  else %}
+    <li><s>{{ memo.memo_text }}</s></li>
+    {% endif %}
+{% endfor %}
+</ul>
+<form action="{% url 'note:add_memo' note.id %}" method="post">
+    {%  csrf_token %}
+    <input type="text" name="memo_text">
+    <label for="add"> add new bulletpoint</label>
+    <input type="submit" value="submit">
+</form>
